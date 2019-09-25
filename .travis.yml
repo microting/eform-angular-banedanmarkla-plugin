@@ -8,10 +8,10 @@ services:
 script:
   - dotnet restore eFormAPI/Plugins/BaneDanmarkLa.Pn/BaneDanmarkLa.Pn.sln
   - dotnet build eFormAPI/Plugins/BaneDanmarkLa.Pn/BaneDanmarkLa.Pn.sln
-  - dotnet test -v n eFormAPI/Plugins/BaneDanmarkLa.Pn/BaneDanmarkLa.Pn.Test/ItemsPlanning.Pn.Test.csproj
+  - dotnet test -v n eFormAPI/Plugins/BaneDanmarkLa.Pn/BaneDanmarkLa.Pn.Test/BaneDanmarkLa.Pn.Test.csproj
   - cd ../..
   - git clone --depth=50 --branch=stable https://github.com/microting/eform-angular-frontend.git microting/eform-angular-frontend
-  - cp -av microting/eform-angular-itemsplanning-plugin/eform-client/src/app/plugins/modules/bane-danmark-la-pn microting/eform-angular-frontend/eform-client/src/app/plugins/modules/bane-danmark-la-pn
+  - cp -av microting/eform-angular-banedanmarkla-plugin/eform-client/src/app/plugins/modules/bane-danmark-la-pn microting/eform-angular-frontend/eform-client/src/app/plugins/modules/bane-danmark-la-pn
   - cp -av microting/eform-angular-banedanmarkla-plugin/eform-client/e2e/Tests/bane-danmark-la-settings microting/eform-angular-frontend/eform-client/e2e/Tests/bane-danmark-la-settings
   - cp -av microting/eform-angular-banedanmarkla-plugin/eform-client/e2e/Tests/bane-danmark-la-general microting/eform-angular-frontend/eform-client/e2e/Tests/bane-danmark-la-general
   - cp -av microting/eform-angular-banedanmarkla-plugin/eform-client/e2e/Page\ objects/BaneDanmarkLa microting/eform-angular-frontend/eform-client/e2e/Page\ objects/BaneDanmarkLa
