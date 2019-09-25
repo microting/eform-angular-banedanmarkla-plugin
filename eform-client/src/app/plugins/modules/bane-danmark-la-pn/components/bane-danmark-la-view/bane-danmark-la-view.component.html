@@ -1,0 +1,196 @@
+<subheader-pn [title]="'BaneDanmark LA\'er' | translate">
+  <button class="btn btn-success" (click)="fetchLa()">Hent LA</button>
+</subheader-pn>
+
+<!--<div mdbModal class="modal fade" #frame="mdbModal">-->
+<!--  <div class="modal-dialog modal-lg">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h3>{{ 'Create new LA' | translate }}</h3>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+        <div class="container-fluid">
+          <div class="row p-1 mt-4 table-responsive no-gutters">
+            <table class="table table-sm table-striped text-center z-depth-1">
+              <thead>
+              <tr>
+                <th scope="col" class="table-header">
+                  <div class="d-flex align-items-center justify-content-center">
+                    #
+                  </div>
+                </th>
+                <th scope="col" class="table-header">
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{'Created at' | translate}}
+                  </div>
+                </th>
+                <th scope="col" class="table-header">
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{'Created by' | translate}}
+                  </div>
+                </th>
+
+                <th scope="col" class="table-header">
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{'Route' | translate}}
+                  </div>
+                </th>
+
+                <th scope="col" class="table-header">
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{'Show from' | translate}}
+                  </div>
+                </th>
+
+                <th scope="col" class="table-header">
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{'Show to' | translate}}
+                  </div>
+                </th>
+
+                <th scope="col" class="table-header">
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{'Is read' | translate}}
+                  </div>
+                </th>
+
+                <th scope="col" class="table-header">
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{'Delete' | translate}}
+                  </div>
+                </th>
+              </tr>
+              </thead>
+              <tbody id="tableBody">
+              <tr *ngFor="let baneDanmarkLa of caseTemplatesPnModel.caseTemplates">
+                <td>
+                  {{baneDanmarkLa.id}}
+                </td>
+                <td>
+                  <date-formatter [date]="baneDanmarkLa.createdAt" [Format]="'datetime'"></date-formatter>
+                </td>
+                <td>
+                  {{baneDanmarkLa.createdBy}}
+                </td>
+                <td style="color: dodgerblue">
+                  <a [routerLink]="" (click)="showLa()" style="color: dodgerblue; text-decoration: underline">
+                    {{baneDanmarkLa.title}}
+                  </a>
+                </td>
+                <td>
+                  <date-formatter [date]="baneDanmarkLa.showFrom" [Format]="'date'"></date-formatter>
+                </td>
+                <td>
+                  <date-formatter [date]="baneDanmarkLa.showTo" [Format]="'date'"></date-formatter>
+                </td>
+                <td>
+
+                  <fa-icon icon="check" size="lg" [fixedWidth]="true" *ngIf="baneDanmarkLa.status"></fa-icon>
+
+                </td>
+                <td>
+                  <button class="btn btn-danger" *ngIf="baneDanmarkLa.showTo < this.date">
+                  <fa-icon icon="delete" size="lg" [fixedWidth]="true"></fa-icon>
+                  </button>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+<!--          <div class="row p-1 mt-4 table-responsive no-gutters">-->
+<!--            <table class="table table-sm table-striped text-center z-depth-1">-->
+<!--              <thead>-->
+<!--              <tr>-->
+<!--                <th scope="col" class="table-header">-->
+<!--                  <div class="d-flex align-items-center justify-content-center">-->
+<!--                    SDK Site Id/Name-->
+<!--                  </div>-->
+<!--                </th>-->
+<!--                <th scope="col" class="table-header">-->
+<!--                  <div class="d-flex align-items-center justify-content-center">-->
+<!--                    {{'Status' | translate}}-->
+
+<!--                  </div>-->
+<!--                </th>-->
+
+<!--                <th scope="col" class="table-header">-->
+<!--                  <div class="d-flex align-items-center justify-content-center">-->
+<!--                    {{'Created Locally' | translate}}-->
+
+<!--                  </div>-->
+<!--                </th>-->
+
+<!--                <th scope="col" class="table-header">-->
+<!--                  <div class="d-flex align-items-center justify-content-center">-->
+<!--                    {{'Sent To Microting' | translate}}-->
+
+<!--                  </div>-->
+<!--                </th>-->
+
+<!--                &lt;!&ndash;                <th scope="col" class="table-header">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  <div class="d-flex align-items-center justify-content-center">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    {{'Ready At Microting' | translate}}&ndash;&gt;-->
+
+<!--                &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </th>&ndash;&gt;-->
+
+<!--                <th scope="col" class="table-header">-->
+<!--                  <div class="d-flex align-items-center justify-content-center">-->
+<!--                    {{'Received On Tablet' | translate}}-->
+<!--                  </div>-->
+<!--                </th>-->
+
+<!--                <th scope="col" class="table-header">-->
+<!--                  <div class="d-flex align-items-center justify-content-center">-->
+<!--                    {{'Answered' | translate}}-->
+<!--                  </div>-->
+<!--                </th>-->
+
+<!--                <th scope="col" class="table-header">-->
+<!--                  <div class="d-flex align-items-center justify-content-center">-->
+<!--                    {{'Removed' | translate}}-->
+<!--                  </div>-->
+<!--                </th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+<!--              <tbody id="caseTableBody">-->
+<!--              <tr *ngFor="let baneDanmarkLaCase of BaneDanmarkLaVersionsModel.baneDanmarkLaCaseStatusModels">-->
+<!--                <td>-->
+<!--                  {{baneDanmarkLaCase.sdkSiteId}}-->
+<!--                  /-->
+<!--                  {{baneDanmarkLaCase.sdkSiteName}}-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <status-bar [status]="baneDanmarkLaCase.status"></status-bar>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <date-formatter [date]="baneDanmarkLaCase.createdLocally" [Format]="'datetime'"></date-formatter>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <date-formatter [date]="baneDanmarkLaCase.sentToMicroting" [Format]="'datetime'"></date-formatter>-->
+<!--                </td>-->
+<!--                &lt;!&ndash;                <td>&ndash;&gt;-->
+<!--                &lt;!&ndash;                  <date-formatter [date]="trashInspectionCase.readyAtMicroting" [Format]="'datetime'"></date-formatter>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </td>&ndash;&gt;-->
+<!--                <td>-->
+<!--                  <date-formatter [date]="baneDanmarkLaCase.receivedOnTablet" [Format]="'datetime'"></date-formatter>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <date-formatter [date]="baneDanmarkLaCase.answered" [Format]="'datetime'"></date-formatter>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <date-formatter [date]="baneDanmarkLaCase.removedFromServer" [Format]="'datetime'"></date-formatter>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+        </div>
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<spinner-pn [spinnerVisibility]="spinnerStatus"></spinner-pn>
+
+<app-show-pdf-modal #showPdfModal></app-show-pdf-modal>
