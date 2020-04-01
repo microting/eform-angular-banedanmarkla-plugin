@@ -13,8 +13,8 @@ import {CaseTemplatesPnModel, CaseTemplatePnModel} from '../../models/bane-danma
   styleUrls: ['./bane-danmark-la-view.component.scss']
 })
 export class BaneDanmarkLaViewComponent implements OnInit {
-  @ViewChild('showPdfModal') showPdfModal;
-  @ViewChild('frame') frame;
+  @ViewChild('showPdfModal', {static: false}) showPdfModal;
+  @ViewChild('frame', {static: false}) frame;
   spinnerStatus = false;
   localPageSettings: PageSettingsModel = new PageSettingsModel();
   baneDanmarkLaVersionsModel: BaneDanmarkLaVersionsPnModel = new BaneDanmarkLaVersionsPnModel();

@@ -7,7 +7,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class ShowPdfModalComponent implements OnInit {
 
-  @ViewChild('frame') frame;
+  @ViewChild('frame', {static: false}) frame;
   spinnerStatus = false;
   constructor() { }
 

@@ -19,7 +19,7 @@ describe('BaneDanmark La plugin settings page', function () {
       siteIds: '1,2,3'
     };
     BaneDanmarkLaSettingsPage.saveSettings(settingsData);
-    browser.pause(8000);
+      $('#spinner-animation').waitForDisplayed(90000, true);
     // Check that items planning settings saved correctly
     const savedSettings = itemsPlanningSettingsPage.getSettings();
     expect(savedSettings.sdkConnectionString, 'SDK connection string is incorrect').equal(settingsData.sdkConnectionString);
